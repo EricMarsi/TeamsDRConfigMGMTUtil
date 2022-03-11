@@ -1,17 +1,17 @@
 #Script Use: Microsoft Teams Voice Migration, Configuration, & Management Utility
 #Created by Eric Marsi (www.UCIT.Blog)
-#Version 2108.1_BETA
+#Version 2203.1_BETA
 #Date: March 10, 2021
-#Updated: August 19, 2021
+#Updated: March 10, 2022
 
 Clear-Host
 
 Write-Host "**************************************************************************************" -ForegroundColor Green
 Write-Host "*        Microsoft Teams Voice Migration, Configuration, & Management Utility        *" -ForegroundColor Green
 Write-Host "*                         Created by Eric Marsi (www.UCIT.Blog)                      *" -ForegroundColor Green
-Write-Host "*                                 Version 2108.1_BETA                                *" -ForegroundColor Green
+Write-Host "*                                 Version 2203.1_BETA                                *" -ForegroundColor Green
 Write-Host "*                                 Date: March 10, 2021                               *" -ForegroundColor Green
-Write-Host "*                               Updated: August 19, 2021                             *" -ForegroundColor Green
+Write-Host "*                               Updated: March 10, 2022                              *" -ForegroundColor Green
 Write-Host "**************************************************************************************`n" -ForegroundColor Green
 
 #Script Tests 
@@ -143,7 +143,7 @@ if ($Mode -eq "1")
         $DTS = Get-Date -Format "MM-dd-yyyy-HHmmssfff"
         try 
             {
-                SkypeforBusiness\Get-CsVoiceNormalizationRule -ErrorAction Stop | Select-Object Identity,Priority,Description,Pattern,Translation,Name,IsInternalExtension | Where-Object Identity -like "*$($SDP)*" | Export-Csv -Path "$($SPath)\SFB_DP_$($SDP)_$($DTS).csv"
+                SkypeforBusiness\Get-CsVoiceNormalizationRule -ErrorAction Stop | Select-Object Identity,Priority,Description,Pattern,Translation,Name,IsInternalExtension | Where-Object Identity -like "*$($SDP)/*" | Export-Csv -Path "$($SPath)\SFB_DP_$($SDP)_$($DTS).csv"
                 Write-Host "Successfully saved the $($SDP) dial plan from Skype for Business Server to file at $($SPath)\SFB_DP_$($SDP)_$($DTS).csv`n" -ForegroundColor Green
             }
         catch 
